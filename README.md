@@ -1,2 +1,11 @@
 # text-similarity
-文本相似度，文本语义向量
+- BERT Whitening
+- Sentence BERT
+- BERT Flow
+- SimBERT
+- SimCES
+- ...
+
+
+
+
