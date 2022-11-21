@@ -36,7 +36,7 @@ class Hyperparamters:
     # Model path
     model_save_path = os.path.join(pwd, 'model', 'V1.0_b', 'model_STS-B1.npz')
     model_load_path = os.path.join(pwd, 'model', 'V2.0', 'model_V2.0.npz')
-    vectors_path = os.path.join(pwd, 'model', 'V1.0', 'vector_STS-B1.npz')
+    vectors_path = os.path.join(pwd, 'model', 'V2.0', 'vector_V2.0.npz')
 
 
 if __name__ == '__main__': 

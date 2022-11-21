@@ -19,8 +19,8 @@ from bert_whitening.utils import save_model,save_vectors
 
 # 加载数据集
 datasets = {
-    'sts-b-train': load_train_data('F:/celery/bert_whitening/data/STS-B/STS-B.train.data'),
-    'sts-b-test': load_test_data('F:/celery/bert_whitening/data/STS-B/STS-B.test.data')
+    'sts-b-train': load_train_data('data/STS-B/STS-B.train.data'),
+    'sts-b-test': load_test_data('data/STS-B/STS-B.test.data')
 }
 
 # 加载分词器 和 BERT向量器
@@ -47,8 +47,6 @@ all_corrcoefs,all_vecs_trans = [],[]
 for (a_vecs, b_vecs), labels in zip(all_vecs, all_labels):
     a_vecs = transform_and_normalize(a_vecs, kernel, bias)
     b_vecs = transform_and_normalize(b_vecs, kernel, bias)
-    print('a_vecs',a_vecs.shape)
-    print('b_vecs',b_vecs.shape)
     all_vecs_trans.append(a_vecs)
     all_vecs_trans.append(b_vecs)
     sims = (a_vecs * b_vecs).sum(axis=1)
@@ -67,12 +65,10 @@ for name, corrcoef in zip(all_names + ['avg', 'w-avg'], all_corrcoefs):
     
 # 向量
 vecs_new = np.concatenate(all_vecs_trans, axis=0)
-print(len(vecs_new))#13184
-print(vecs_new.shape)#(13184, 384)
+
 # 句子
 querys_new = np.concatenate([all_query1[0],all_query2[0],all_query1[1],all_query2[1]], axis=0)
-print(len(querys_new))#13184
-print(querys_new.shape)#(13184,)
+
 # 去重
 query_vec_dict = {}
 for i in range(len(querys_new)):
@@ -84,10 +80,9 @@ for k, v in query_vec_dict.items():
     querys_new_save.append(k)
     vecs_new_save.append(v)
     
-print(len(vecs_new_save))#11621  
 
 # 本地保存 kernel, bias
-f_model = 'F:/celery/bert_whitening/model/V1.0/model_STS-B.npz'
+f_model = 'model/V1.0/model_STS-B.npz'
 save_model(f_model,kernel,bias)  
 f_vector = 'F:/celery/bert_whitening/model/V1.0/vector_STS-B.npz'
 save_vectors(f_vector, vecs_new_save, querys_new_save)
