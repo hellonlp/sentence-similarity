@@ -2,8 +2,6 @@
 """
 Created on Tue Nov 15 16:44:40 2022
 
-@author: chenming
-@email: chenming6@xiaomi.com
 """
 
 
