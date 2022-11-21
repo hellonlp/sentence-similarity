@@ -8,8 +8,8 @@
 提取码：1234  
 说明：LCQMC数据集由3部分组成，分为train(238766)，valid(8802) 和 test(12500)。  
 3. 其他  
-ATEC：分为train(62477)，valid(20000) 和 test(20000) ，链接：https://pan.baidu.com/s/1PM6_10m7WLE-two0_jY80g，提取码：1234  
-BQ：分为train(100000)，valid(10000) 和 test(10000) ，链接：https://pan.baidu.com/s/1QkS6_MnuFHmWvYLnJBRmGQ，提取码：1234  
-PAWSX：分为train(49401)，valid(2000) 和 test(2000) ，链接：https://pan.baidu.com/s/1sXfEVXWpFElN_aykFo2rUw，提取码：1234  
+ATEC：分为train(62477)，valid(20000) 和 test(20000) ，链接：https://pan.baidu.com/s/1PM6_10m7WLE-two0_jY80g ，提取码：1234  
+BQ：分为train(100000)，valid(10000) 和 test(10000) ，链接：https://pan.baidu.com/s/1QkS6_MnuFHmWvYLnJBRmGQ ，提取码：1234  
+PAWSX：分为train(49401)，valid(2000) 和 test(2000) ，链接：https://pan.baidu.com/s/1sXfEVXWpFElN_aykFo2rUw ，提取码：1234  
 
 
