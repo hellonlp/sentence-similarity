@@ -2,6 +2,7 @@
 """
 Created on Tue Nov 15 16:41:29 2022
 
+@author: chenming
 """
 
 
@@ -19,8 +20,8 @@ from bert_whitening.utils import save_model,save_vectors
 
 # 加载数据集
 datasets = {
-    'sts-b-train': load_train_data('data/STS-B/STS-B.train.data'),
-    'sts-b-test': load_test_data('data/STS-B/STS-B.test.data')
+    'sts-b-train': load_train_data('datasets/STS-B/STS-B.train.data'),
+    'sts-b-test': load_test_data('datasets/STS-B/STS-B.test.data')
 }
 
 # 加载分词器 和 BERT向量器
@@ -84,7 +85,7 @@ for k, v in query_vec_dict.items():
 # 本地保存 kernel, bias
 f_model = 'model/V1.0/model_STS-B.npz'
 save_model(f_model,kernel,bias)  
-f_vector = 'F:/celery/bert_whitening/model/V1.0/vector_STS-B.npz'
+f_vector = 'model/V1.0/vector_STS-B.npz'
 save_vectors(f_vector, vecs_new_save, querys_new_save)
 
 
