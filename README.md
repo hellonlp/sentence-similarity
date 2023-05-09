@@ -3,7 +3,7 @@
 - Sentence BERT
 - BERT Flow
 - SimBERT
-- SimCES
+- SimCSE
 - ...
 
 
