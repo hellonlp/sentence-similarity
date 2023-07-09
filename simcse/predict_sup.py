@@ -18,10 +18,11 @@ import numpy as np
 from typing import Dict, List
 from torch.utils.data import DataLoader, Dataset
 from transformers import BertTokenizer
-from simcse.simcse_sup import SimCSEModel
 from simcse.utils import load_data_new
 from simcse.hyperparameters import Hyperparameters as hp
 from sklearn.metrics.pairwise import cosine_similarity
+from simcse.networks import SimCSEModelSup
+
 
 
 # parameters
@@ -34,7 +35,7 @@ POOLING = hp.POOLING
 
 # model
 tokenizer = BertTokenizer.from_pretrained(pretrained_model_path)
-MODEL = SimCSEModel(pretrained_model=pretrained_model_path, pooling=hp.POOLING)
+MODEL = SimCSEModelSup(pretrained_model=pretrained_model_path, pooling=hp.POOLING)
 MODEL.load_state_dict(torch.load(simcse_path))
 
 

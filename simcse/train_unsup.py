@@ -6,14 +6,10 @@ Created on Tue Apr 18 21:08:58 2023
 """
 
 
-
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
-
 import random
-# import time
 from typing import Dict, List
-# import jsonlines
 import numpy as np
 import torch
 import torch.nn as nn
@@ -23,8 +19,9 @@ from scipy.stats import spearmanr
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 from transformers import BertConfig, BertModel, BertTokenizer
-from simcse_pytorch.hyperparameters import Hyperparameters as hp
-from simcse_pytorch.utils import load_data_new
+from simcse.hyperparameters import Hyperparameters as hp
+from simcse.utils import load_data_new
+from simcse.networks import SimCSEModelUnsup
 
 
 
@@ -75,56 +72,7 @@ class TestDataset(Dataset):
     def __getitem__(self, index: int):
         da = self.data[index]        
         return self.text_2_id([da[0]]), self.text_2_id([da[1]]), int(da[2])
-
-
-class SimCSEModel(nn.Module):
-    """Simcse无监督模型定义"""
-    def __init__(self, pretrained_model, pooling):
-        super(SimCSEModel, self).__init__()
-        config = BertConfig.from_pretrained(pretrained_model)       
-        config.attention_probs_dropout_prob = hp.DROPOUT   # 修改config的dropout系数
-        config.hidden_dropout_prob = hp.DROPOUT           
-        self.bert = BertModel.from_pretrained(pretrained_model, config=config)
-        self.pooling = pooling
-        
-    def forward(self, input_ids, attention_mask, token_type_ids):
-
-        out = self.bert(input_ids, attention_mask, token_type_ids, output_hidden_states=True)
-
-        if self.pooling == 'cls':
-            return out.last_hidden_state[:, 0]  # [batch, 768]
-        
-        if self.pooling == 'pooler':
-            return out.pooler_output            # [batch, 768]
-        
-        if self.pooling == 'last-avg':
-            last = out.last_hidden_state.transpose(1, 2)    # [batch, 768, seqlen]
-            return torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)       # [batch, 768]
-        
-        if self.pooling == 'first-last-avg':
-            first = out.hidden_states[1].transpose(1, 2)    # [batch, 768, seqlen]
-            last = out.hidden_states[-1].transpose(1, 2)    # [batch, 768, seqlen]                   
-            first_avg = torch.avg_pool1d(first, kernel_size=last.shape[-1]).squeeze(-1) # [batch, 768]
-            last_avg = torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)   # [batch, 768]
-            avg = torch.cat((first_avg.unsqueeze(1), last_avg.unsqueeze(1)), dim=1)     # [batch, 2, 768]
-            return torch.avg_pool1d(avg.transpose(1, 2), kernel_size=2).squeeze(-1)     # [batch, 768]
     
-
-
-# y_true = torch.arange(10) 
-# y_true # tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-# y_true = (y_true - y_true % 2 * 2) + 1
-# y_true # tensor([1, 0, 3, 2, 5, 4, 7, 6, 9, 8])
-#
-# y_pred = torch.tensor([[1,2,3],[4,5,6]])
-# y_pred.shape
-# y_pred.unsqueeze(1).shape
-# y_pred.shape
-# y_pred.unsqueeze(0).shape
-# y_pred
-# F.cosine_similarity(y_pred.unsqueeze(1), y_pred.unsqueeze(0), dim=-1)
-
-# y_pred.view(6, -1).shape
 
 
 def simcse_unsup_loss(y_pred):
@@ -135,10 +83,10 @@ def simcse_unsup_loss(y_pred):
     # 得到y_pred对应的label, [1, 0, 3, 2, ..., batch_size-1, batch_size-2]
     y_true = torch.arange(y_pred.shape[0]) # [batch_size*2]
     y_true = (y_true - y_true % 2 * 2) + 1
-    print('=== y_true: ===', y_true.shape) 
+
     # batch内两两计算相似度, 得到相似度矩阵(对角矩阵)
     sim = F.cosine_similarity(y_pred.unsqueeze(1), y_pred.unsqueeze(0), dim=-1) # [batch_size*2, batch_size*2]
-    print('=== sim: ===', sim.shape) # [128, 128]: 
+
     # 将相似度矩阵对角线置为很小的值, 消除自身的影响
     sim = sim - torch.eye(y_pred.shape[0]) * 1e12
     # 相似度矩阵除以温度系数
@@ -226,7 +174,7 @@ if __name__ == '__main__':
     test_dataloader = DataLoader(TestDataset(test_data), batch_size=hp.BATCH_SIZE)
     # load model
     assert hp.POOLING in ['cls', 'pooler', 'last-avg', 'first-last-avg']
-    model = SimCSEModel(pretrained_model=hp.pretrained_model_path, pooling=hp.POOLING).to(hp.DEVICE)  
+    model = SimCSEModelUnsup(pretrained_model=hp.pretrained_model_path, pooling=hp.POOLING).to(hp.DEVICE)  
     optimizer = torch.optim.AdamW(model.parameters(), lr=hp.LR)
     # train
     best = 0

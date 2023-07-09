@@ -6,16 +6,23 @@ Created on Tue Apr 18 16:40:01 2023
 """
 
 
+import os
+import sys
+pwd = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(pwd)
+print('pwd:', pwd)
+
 import heapq
 import torch
 import numpy as np
 import torch.nn as nn
 from typing import Dict, List
-from torch.utils.data import DataLoader, Dataset
+from sklearn.metrics.pairwise import cosine_similarity
 from transformers import BertConfig, BertModel, BertTokenizer
+from torch.utils.data import DataLoader, Dataset
 from simcse.utils import load_data_new
 from simcse.hyperparameters import Hyperparameters as hp
-from sklearn.metrics.pairwise import cosine_similarity
+from simcse.networks import SimCSEModelUnsup
 
 
 # parameters
@@ -28,43 +35,10 @@ POOLING = hp.POOLING #'cls'
 DROPOUT = hp.DROPOUT
 
 
-
-
-class SimCSEModel(nn.Module):
-    """Simcse无监督模型定义"""
-    def __init__(self, pretrained_model, pooling):
-        super(SimCSEModel, self).__init__()
-        config = BertConfig.from_pretrained(pretrained_model)       
-        config.attention_probs_dropout_prob = DROPOUT   # 修改config的dropout系数
-        config.hidden_dropout_prob = DROPOUT           
-        self.bert = BertModel.from_pretrained(pretrained_model, config=config)
-        self.pooling = pooling
-        
-    def forward(self, input_ids, attention_mask, token_type_ids):
-
-        out = self.bert(input_ids, attention_mask, token_type_ids, output_hidden_states=True)
-
-        if self.pooling == 'cls':
-            return out.last_hidden_state[:, 0]  # [batch, 768]
-        
-        if self.pooling == 'pooler':
-            return out.pooler_output            # [batch, 768]
-        
-        if self.pooling == 'last-avg':
-            last = out.last_hidden_state.transpose(1, 2)    # [batch, 768, seqlen]
-            return torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)       # [batch, 768]
-        
-        if self.pooling == 'first-last-avg':
-            first = out.hidden_states[1].transpose(1, 2)    # [batch, 768, seqlen]
-            last = out.hidden_states[-1].transpose(1, 2)    # [batch, 768, seqlen]                   
-            first_avg = torch.avg_pool1d(first, kernel_size=last.shape[-1]).squeeze(-1) # [batch, 768]
-            last_avg = torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)   # [batch, 768]
-            avg = torch.cat((first_avg.unsqueeze(1), last_avg.unsqueeze(1)), dim=1)     # [batch, 2, 768]
-            return torch.avg_pool1d(avg.transpose(1, 2), kernel_size=2).squeeze(-1)     # [batch, 768]
     
 # model
 tokenizer = BertTokenizer.from_pretrained(pretrained_model_path)
-MODEL = SimCSEModel(pretrained_model=pretrained_model_path, pooling=hp.POOLING)
+MODEL = SimCSEModelUnsup(pretrained_model=pretrained_model_path, pooling=hp.POOLING)
 MODEL.load_state_dict(torch.load(simcse_path))
 
     

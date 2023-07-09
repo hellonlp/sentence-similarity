@@ -24,7 +24,7 @@ from tqdm import tqdm
 from transformers import BertConfig, BertModel, BertTokenizer
 from simcse.hyperparameters import Hyperparameters as hp
 from simcse.utils import load_data_new, load_snli_data
-
+from simcse.networks import SimCSEModelSup
 
 
 tokenizer = BertTokenizer.from_pretrained(hp.pretrained_model_path, use_fast=True)
@@ -84,37 +84,7 @@ class TestDataset(Dataset):
         line = self.data[index]
         return self.text_2_id([line[0]]), self.text_2_id([line[1]]), int(line[2])
     
-    
-class SimCSEModel(nn.Module):
-    """Simcse有监督模型定义"""
-    def __init__(self, pretrained_model: str, pooling: str):
-        super(SimCSEModel, self).__init__()
-        # config = BertConfig.from_pretrained(pretrained_model)   # 有监督不需要修改dropout
-        self.bert = BertModel.from_pretrained(pretrained_model)
-        self.pooling = pooling
-        
-    def forward(self, input_ids, attention_mask, token_type_ids):
-        
-        # out = self.bert(input_ids, attention_mask, token_type_ids)
-        out = self.bert(input_ids, attention_mask, token_type_ids, output_hidden_states=True)
 
-        if self.pooling == 'cls':
-            return out.last_hidden_state[:, 0]  # [batch, 768]
-        
-        if self.pooling == 'pooler':
-            return out.pooler_output            # [batch, 768]
-        
-        if self.pooling == 'last-avg':
-            last = out.last_hidden_state.transpose(1, 2)    # [batch, 768, seqlen]
-            return torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)       # [batch, 768]
-        
-        if self.pooling == 'first-last-avg':
-            first = out.hidden_states[1].transpose(1, 2)    # [batch, 768, seqlen]
-            last = out.hidden_states[-1].transpose(1, 2)    # [batch, 768, seqlen]                   
-            first_avg = torch.avg_pool1d(first, kernel_size=last.shape[-1]).squeeze(-1) # [batch, 768]
-            last_avg = torch.avg_pool1d(last, kernel_size=last.shape[-1]).squeeze(-1)   # [batch, 768]
-            avg = torch.cat((first_avg.unsqueeze(1), last_avg.unsqueeze(1)), dim=1)     # [batch, 2, 768]
-            return torch.avg_pool1d(avg.transpose(1, 2), kernel_size=2).squeeze(-1)     # [batch, 768]
                   
 
   
@@ -228,7 +198,7 @@ if __name__ == '__main__':
     test_dataloader = DataLoader(TestDataset(test_data), batch_size=hp.BATCH_SIZE)
     # load model    
     assert hp.POOLING in ['cls', 'pooler', 'last-avg', 'first-last-avg']
-    model = SimCSEModel(pretrained_model=hp.pretrained_model_path, pooling=hp.POOLING)
+    model = SimCSEModelSup(pretrained_model=hp.pretrained_model_path, pooling=hp.POOLING)
     model.to(hp.DEVICE)
     optimizer = torch.optim.AdamW(model.parameters(), lr=hp.LR)
     # train
