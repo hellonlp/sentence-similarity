@@ -1,0 +1,4 @@
+simcse/model/load_model/simcse_sup.pt
+simcse/model/load_model/simcse_unsup.pt
+simcse/roberta_pytorch/pytorch_model.bin
+
