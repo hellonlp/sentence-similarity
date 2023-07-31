@@ -4,6 +4,8 @@
 - BERT Flow
 - SimBERT
 - SimCSE
+- Trans Encoder
+- ProCSE
 - ...
 
 
