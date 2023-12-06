@@ -5,7 +5,7 @@
 - SimBERT
 - SimCSE
 - Trans Encoder
-- ProCSE
+- PromCSE
 - ...
 
 
