@@ -9,7 +9,7 @@ The evaluation dataset is in Chinese.
 |  SimBERT   |  70.01| -| -| -| -| -|
 |  SBERT-Whitening  |  71.75| -| -| -| -| -|
 |  [hellonlp/simcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  |  80.96| -| -| -| -| -|
-|  [hellonlp/promcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/promcse-roberta-base-zh)  |  **81.57**| -| -| -| -| -|
+|  [hellonlp/promcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
 
 
 ## Uses
@@ -21,7 +21,7 @@ pip install promcse
 After installing the package, you can load our model by two lines of code
 ```python
 from promcse import PromCSE
-model = PromCSE("hellonlp/promcse-roberta-base-zh", "cls", 10)
+model = PromCSE("hellonlp/promcse-bert-base-zh", "cls", 10)
 ```
 
 Then you can use our model for encoding sentences into embeddings
