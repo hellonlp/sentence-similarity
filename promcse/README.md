@@ -1,6 +1,6 @@
-# PromCSE
+# PromCSE(sup)
 
-## Use
+## Uses
 To use the tool, first install the `promcse` package from [PyPI](https://pypi.org/project/promcse/)
 ```bash
 pip install promcse
