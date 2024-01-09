@@ -1,12 +1,4 @@
-# text-similarity
-- BERT Whitening
-- Sentence BERT
-- BERT Flow
-- SimBERT
-- SimCSE
-- Trans Encoder
-- PromCSE
-- ...
+# Text Similarity
 
 
 ## Model List
