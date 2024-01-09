@@ -53,9 +53,9 @@ print(result)
 ```
 
 ## 文章链接
-- [论文解读]((https://zhuanlan.zhihu.com/p/624425957)
-- [论文复现]((https://zhuanlan.zhihu.com/p/634871699)
+- [论文解读](https://zhuanlan.zhihu.com/p/624425957)
+- [论文复现](https://zhuanlan.zhihu.com/p/634871699)
 
 ## 模型链接
-- [语言模型(simcse/model/loal_model)]((https://pan.baidu.com/s/1bTqJBB49gwJksmUzNql5xg?pwd=siuj) 
+- [语言模型(simcse/model/loal_model)](https://pan.baidu.com/s/1bTqJBB49gwJksmUzNql5xg?pwd=siuj) 
 - [训练模型(simcse/roberta_pytorch)]](https://pan.baidu.com/s/1NUMowTyAAa7sF-hHEcpUOg?pwd=eiqm) 
