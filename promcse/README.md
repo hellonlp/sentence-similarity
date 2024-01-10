@@ -8,6 +8,7 @@ The evaluation dataset is in Chinese.
 |  BERT-Whitening  |  65.27| -| -| -| -| -|
 |  SimBERT   |  70.01| -| -| -| -| -|
 |  SBERT-Whitening  |  71.75| -| -| -| -| -|
+|  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  |  78.61| -| -| -| -| -|
 |  [hellonlp/simcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  |  80.96| -| -| -| -| -|
 |  [hellonlp/promcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
 
