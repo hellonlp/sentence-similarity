@@ -2,15 +2,15 @@
 
 
 ## Model List
-The evaluation dataset is in Chinese.
+The evaluation dataset is in Chinese, and we used the same language model **RoBERTa base** on different methods.
 |          Model          | STS-B(w-avg) | ATEC | BQ | LCQMC | PAWSX | Avg. |
 |:-----------------------:|:------------:|:-----------:|:----------|:-------------|:------------:|:----------:|
 |  BERT-Whitening  |  65.27| -| -| -| -| -|
 |  SimBERT   |  70.01| -| -| -| -| -|
 |  SBERT-Whitening  |  71.75| -| -| -| -| -|
 |  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  |  78.61| -| -| -| -| -|
-|  [hellonlp/simcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  |  80.96| -| -| -| -| -|
-|  [hellonlp/promcse-roberta-base-zh(sup)](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
+|  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  |  80.96| -| -| -| -| -|
+|  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
 
 
 ## Uses
