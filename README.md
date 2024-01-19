@@ -15,7 +15,7 @@ The evaluation dataset is in Chinese, and we used the same language model **RoBE
 
 
 ## Uses
-To use the tool, first install the `promcse` package from [PyPI](https://pypi.org/project/promcse/)
+To use the tool(promcse-base-zh), first install the `promcse` package from [PyPI](https://pypi.org/project/promcse/)
 ```bash
 pip install promcse
 ```
