@@ -4,14 +4,14 @@
 ## Model List
 考虑到有些数据集的 test 集较小，可能会导致评估准确性偏差较大，所以这里的评估数据同时使用了train、valid和test，且最终评估结果采用了加权平均（w-avg）的方法得到。  
 此外，这里使用相同的语言模型**RoBERTa Base**。
-|          Model          | STS-B| ATEC | BQ| LCQMC | PAWSX | Avg. |
+|          Model          |  ATEC | BQ| LCQMC | PAWSX| STS-B| Avg. |
 |:-----------------------:|:------------:|:-----------:|:----------|:-------------|:------------:|:----------:|
-|  BERT-Whitening  |  65.27| -| -| -| -| -|
-|  SimBERT   |  70.01| -| -| -| -| -|
-|  SBERT-Whitening  |  71.75| -| -| -| -| -|
-|  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  |  78.61| -| -| -| -| -|
-|  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  |  80.96| -| -| -| -| -|
-|  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
+|  BERT-Whitening  | -| -| -| -| 65.27| -|
+|  SimBERT   | -| -| -| -| 70.01| -|
+|  SBERT-Whitening  | -| -| -| -| 71.75| -|
+|  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  | -| -| -| -| 78.61| -|
+|  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  | -| -| -| -| 80.96| -|
+|  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  | -| -| -| -| **81.57**| -|
 
 
 ## Data List
