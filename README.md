@@ -3,7 +3,7 @@
 
 ## Model List
 The evaluation dataset is in Chinese, and we used the same language model **RoBERTa base** on different methods.
-|          Model          | STS-B(w-avg) | ATEC(w-avg) | BQ(w-avg) | LCQMC(w-avg) | PAWSX(w-avg) | Avg. |
+|          Model          | STS-B| ATEC | BQ| LCQMC | PAWSX | Avg. |
 |:-----------------------:|:------------:|:-----------:|:----------|:-------------|:------------:|:----------:|
 |  BERT-Whitening  |  65.27| -| -| -| -| -|
 |  SimBERT   |  70.01| -| -| -| -| -|
