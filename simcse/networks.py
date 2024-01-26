@@ -2,13 +2,14 @@
 """
 Created on Sun Jul  9 19:20:48 2023
 
-@author: Chen Ming
+@author: cm
 """
 
 
 import torch
 import torch.nn as nn
 from transformers import BertConfig, BertModel
+
 from simcse.hyperparameters import Hyperparameters as hp
 
 
@@ -76,7 +77,4 @@ class SimCSEModelSup(nn.Module):
             avg = torch.cat((first_avg.unsqueeze(1), last_avg.unsqueeze(1)), dim=1)     # [batch, 2, 768]
             return torch.avg_pool1d(avg.transpose(1, 2), kernel_size=2).squeeze(-1)     # [batch, 768]
                   
-
-
-
   
