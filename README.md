@@ -1,4 +1,4 @@
-# Text Similarity
+# Sentence Similarity
 
 
 ## Model List
