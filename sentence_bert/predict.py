@@ -10,6 +10,7 @@ Created on Mon Dec 12 11:46:02 2022
 import heapq
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+
 from sentence_bert.hyperparameters import Hyperparamters as hp
 from sentence_bert.modules import get_tokenizer,get_encoder
 from sentence_bert.modules import convert_sentence_to_vecs
@@ -27,7 +28,7 @@ if hp.use_weigths:
     encoder.load_weights(hp.weights_load_path)
 
     
-def get_similarity_topN_new(sentence, texts, topN=10):  
+def get_similarity_topn(sentence, texts, topN=10):  
     vec = convert_sentence_to_vecs(sentence, tokenizer, encoder)
     texts_vec = convert_sentences_to_vecs(texts, tokenizer, encoder)
     similarity_list = cosine_similarity(vec, texts_vec).tolist()[0]
@@ -50,7 +51,7 @@ if __name__ == '__main__':
     texts = ['你怎么样','我吃了一个苹果','你过的好吗','你还好吗','你',
              '你好不好','你好不好呢','我不开心']
     sentence = '你好吗'
-    results = get_similarity_topN_new(sentence,texts)
+    results = get_similarity_topn(sentence,texts)
     for l in results:
         print(l)   
     
