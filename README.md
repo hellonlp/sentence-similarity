@@ -1,5 +1,5 @@
 # Sentence Similarity
-
+中文文本语义向量模型。
 
 
 ## Data List
