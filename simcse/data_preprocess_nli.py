@@ -57,7 +57,7 @@ def snli_preprocess(src_path: str, dst_path:str) -> None:
 if __name__ == '__main__':
     
     dev_src, dev_dst = 'MNLI/cnsd_multil_dev_matched.jsonl', 'MNLI/dev_matched.txt'
-    test_src, test_dst = 'FMNLI/cnsd_multil_dev_mismatched.jsonl', 'MNLI/dev_mismatched.txt'
+    test_src, test_dst = 'MNLI/cnsd_multil_dev_mismatched.jsonl', 'MNLI/dev_mismatched.txt'
     train_src, train_dst = 'MNLI/cnsd_multil_train.jsonl', 'MNLI/train.txt'
     
     snli_preprocess(train_src, train_dst)
