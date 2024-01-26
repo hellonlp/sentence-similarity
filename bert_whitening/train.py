@@ -8,13 +8,18 @@ Created on Tue Nov 15 16:41:29 2022
 
 
 import numpy as np
-from bert_whitening.utils import load_train_data,load_test_data
-from bert_whitening.modules import get_tokenizer,get_encoder
-from bert_whitening.hyperparameters import Hyperparamters as hp
-from bert_whitening.modules import transform_and_normalize,compute_corrcoef
-from bert_whitening.modules import convert_to_vecs,compute_kernel_bias
-from bert_whitening.utils import save_model,save_vectors
 
+from bert_whitening.utils import load_train_data
+from bert_whitening.utils import load_test_data
+from bert_whitening.modules import get_tokenizer
+from bert_whitening.modules import get_encoder
+from bert_whitening.hyperparameters import Hyperparamters as hp
+from bert_whitening.modules import transform_and_normalize
+from bert_whitening.modules import compute_corrcoef
+from bert_whitening.modules import convert_to_vecs
+from bert_whitening.modules import compute_kernel_bias
+from bert_whitening.utils import save_model
+from bert_whitening.utils import save_vectors
 
 
 
@@ -87,7 +92,3 @@ f_model = 'model/V1.0/model_STS-B.npz'
 save_model(f_model,kernel,bias)  
 f_vector = 'model/V1.0/vector_STS-B.npz'
 save_vectors(f_vector, vecs_new_save, querys_new_save)
-
-
-    
-    
