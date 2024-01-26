@@ -28,7 +28,7 @@ The following datasets are all in Chinese.
 
 
 
-## Uses
+## Uses: PromCSE
 To use the tool(promcse-base-zh), first install the `promcse` package from [PyPI](https://pypi.org/project/promcse/)
 ```bash
 pip install promcse
