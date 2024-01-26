@@ -1,8 +1,12 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Dec  9 16:49:38 2022
+
+@author: cm
+"""
 
 
 
-""" NLI数据预处理 """
 import time
 import jsonlines
 from tqdm import tqdm
@@ -10,7 +14,8 @@ from tqdm import tqdm
 
 
 def timer(func):
-    """ time-consuming decorator 
+    """ 
+    time-consuming decorator 
     """
     def wrapper(*args, **kwargs):
         ts = time.time()
@@ -23,7 +28,8 @@ def timer(func):
 
 @timer
 def snli_preprocess(src_path: str, dst_path:str) -> None:
-    """处理原始的中文snli数据
+    """
+    处理原始的中文snli数据
 
     Args:
         src_path (str): 原始文件地址
@@ -63,6 +69,4 @@ if __name__ == '__main__':
     snli_preprocess(train_src, train_dst)
     snli_preprocess(test_src, test_dst)
     snli_preprocess(dev_src, dev_dst)
-    
-
     
