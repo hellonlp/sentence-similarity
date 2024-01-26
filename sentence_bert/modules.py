@@ -18,6 +18,7 @@ from keras.models import Model
 import tensorflow as tf
 from keras.engine.base_layer import Layer
 from keras.engine.base_layer import InputSpec
+
 from sentence_bert.hyperparameters import Hyperparamters as hp
 
 
