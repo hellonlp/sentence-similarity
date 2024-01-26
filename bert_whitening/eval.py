@@ -8,6 +8,7 @@ Created on Tue Nov 15 17:25:35 2022
 
 
 import numpy as np
+
 from bert_whitening.modules import transform_and_normalize
 from bert_whitening.hyperparameters import Hyperparamters as hp
 from bert_whitening.modules import get_tokenizer,get_encoder
@@ -23,9 +24,6 @@ tokenizer = get_tokenizer(hp.vocab_path)
 encoder = get_encoder(hp.config_path, hp.checkpoint_path)
 
 
-# =============================================================================
-# 训练集：STS-B
-# =============================================================================
 # 加载数据集
 datasets = {
     'sts-b-train': load_train_data('datasets/chn/senteval_cn/STS-B/STS-B.train.data'),
