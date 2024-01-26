@@ -2,17 +2,15 @@
 """
 Created on Wed Apr 19 14:57:26 2023
 
-@author: Chen Ming
+@author: cm
 """
 
 
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
+#os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
 import random
-# import time
 from typing import Dict, List
-# import jsonlines
 import numpy as np
 import torch
 import torch.nn as nn
@@ -22,9 +20,11 @@ from scipy.stats import spearmanr
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 from transformers import BertConfig, BertModel, BertTokenizer
+
 from simcse.hyperparameters import Hyperparameters as hp
 from simcse.utils import load_data_new, load_snli_data
 from simcse.networks import SimCSEModelSup
+
 
 
 tokenizer = BertTokenizer.from_pretrained(hp.pretrained_model_path, use_fast=True)
@@ -33,19 +33,19 @@ tokenizer = BertTokenizer.from_pretrained(hp.pretrained_model_path, use_fast=Tru
 
 # 加载数据集
 datasets_sts = {
-    'STS-B-train': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.train.data'),
-    'STS-B-test': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.test.data'),
-    'STS-B-valid': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.valid.data')
+    'STS-B-train': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.train.data'),
+    'STS-B-test': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.test.data'),
+    'STS-B-valid': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.valid.data')
 }
 datasets_lqcmc = {
-    'LCQMC-train': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.train.data'),
-    'LCQMC-test': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.test.data'),
-    'LCQMC-valid': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.valid.data')
+    'LCQMC-train': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.train.data'),
+    'LCQMC-test': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.test.data'),
+    'LCQMC-valid': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.valid.data')
 }
 datasets_snli = {
-    'SNLI-train': load_snli_data('F:/celery/datasets/chn/senteval_cn/SNLI/train.txt'),
-    'SNLI-test': load_snli_data('F:/celery/datasets/chn/senteval_cn/SNLI/test.txt'),
-    'SNLI-valid': load_snli_data('F:/celery/datasets/chn/senteval_cn/SNLI/dev.txt')
+    'SNLI-train': load_snli_data('datasets/chn/senteval_cn/SNLI/train.txt'),
+    'SNLI-test': load_snli_data('datasets/chn/senteval_cn/SNLI/test.txt'),
+    'SNLI-valid': load_snli_data('datasets/chn/senteval_cn/SNLI/dev.txt')
 }
 
 
@@ -85,9 +85,6 @@ class TestDataset(Dataset):
         return self.text_2_id([line[0]]), self.text_2_id([line[1]]), int(line[2])
     
 
-                  
-
-  
     
 def simcse_sup_loss(y_pred):
     """
@@ -175,12 +172,8 @@ def train(model, train_dl, dev_dl, optimizer) -> None:
                 return 
             
             
-            
 
-
-if __name__ == '__main__':
-    
-    
+if __name__ == '__main__':    
     logger.info(f'device: {hp.DEVICE}, pooling: {hp.POOLING}, model path: {hp.pretrained_model_path}')
     tokenizer = BertTokenizer.from_pretrained(hp.pretrained_model_path)
     # load data (train)
