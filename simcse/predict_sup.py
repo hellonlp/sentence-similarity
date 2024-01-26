@@ -10,7 +10,6 @@ import os
 import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(pwd)
-print('pwd:', pwd)
 
 import heapq
 import torch
@@ -21,6 +20,7 @@ from transformers import BertTokenizer
 from simcse.utils import load_data_new
 from simcse.hyperparameters import Hyperparameters as hp
 from sklearn.metrics.pairwise import cosine_similarity
+
 from simcse.networks import SimCSEModelSup
 
 
@@ -37,8 +37,6 @@ POOLING = hp.POOLING
 tokenizer = BertTokenizer.from_pretrained(pretrained_model_path)
 MODEL = SimCSEModelSup(pretrained_model=pretrained_model_path, pooling=hp.POOLING)
 MODEL.load_state_dict(torch.load(simcse_path))
-
-
 
 
 
@@ -90,7 +88,7 @@ def get_vector_simcse(sentence, model=MODEL):
 
 
 
-def get_similarity_topN_new(sentence, texts, topN=10):  
+def get_similarity_topn(sentence, texts, topN=10):  
     vec = get_vector_simcse(sentence)
     texts_vec = [get_vector_simcse(text) for text in texts]
     similarity_list = [cosine_similarity(vec, l)[0] for l in texts_vec]
@@ -116,24 +114,13 @@ if __name__ == '__main__':
         'STS-B-test': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.test.data'),
         'STS-B-valid': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.valid.data')
     }
-
-    #
-    import time
-    start = time.time()
-    sentence = '一个小孩在骑马。' #[datasets_sts['STS-B-valid'][1][0]]
-    vector = get_vector_simcse(sentence)#[0]
-    print(vector.shape)
-    end = time.time()
-    print('Time cost:', end - start)
     
-    
-    
-    # 和新数据对比
+    # 1个句子与多个句子
     texts = ['你怎么样','我吃了一个苹果','你过的好吗','你还好吗','你',
              '你好不好','你好不好呢','我不开心','我好开心啊', '你吃饭了吗',
              '你好吗','你现在好吗','你好个鬼']
     sentence = '你好吗'
-    results = get_similarity_topN_new(sentence,texts, topN=20)
+    results = get_similarity_topn(sentence,texts, topN=20)
     for l in results:
         print(l)   
     
@@ -154,9 +141,4 @@ if __name__ == '__main__':
 # (0.5442, '你好个鬼')
 # (0.4516, '你吃饭了吗')
 # (0.29, '我不开心')
-# (0.2782, '我吃了一个苹果')
-
-
-
-
-   
+# (0.2782, '我吃了一个苹果')  
