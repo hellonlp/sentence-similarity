@@ -13,6 +13,20 @@ The evaluation dataset is in Chinese, and we used the same language model **RoBE
 |  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  |  **81.57**| -| -| -| -| -|
 
 
+## Data List
+The following datasets are all in Chinese.
+|          Data          | size(train) | size(valid) | size(test) |
+|:----------------------:|:----------:|:----------:|:----------:|
+|   [STS-B](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/10yfKfTtcmLQ70-jzHIln1A%3Fpwd%3Dgf8y)  |   5231|   1458|   1361|
+|   [ATEC](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1gmnyz9emqOXwaHhSM9CCUA%3Fpwd%3Db17c)   |  62477|  20000|  20000|
+|   [BQ](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1M-e01yyy5NacVPrph9fbaQ%3Fpwd%3Dtis9)     | 100000|  10000|  10000|
+|   [LCQMC](https://pan.baidu.com/s/16DfE7fHrCkk4e8a2j3SYUg?pwd=bc8w )                                      | 238766|   8802|  12500|
+|   [PAWSX](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1ox0tJY3ZNbevHDeAqDBOPQ%3Fpwd%3Dmgjn)  |  49401|   2000|   2000|
+|   [SNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1NOgA7JwWghiauwGAUvcm7w%3Fpwd%3Ds75v)   | 146828|   2699|   2618|
+|   [MNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1xjZKtWk3MAbJ6HX4pvXJ-A%3Fpwd%3D2kte)   | 122547|   2932|   2397|
+
+
+
 
 ## Uses
 To use the tool(promcse-base-zh), first install the `promcse` package from [PyPI](https://pypi.org/project/promcse/)
