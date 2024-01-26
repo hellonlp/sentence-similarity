@@ -2,10 +2,10 @@
 """
 Created on Fri Dec  9 14:32:43 2022
 
-@author: chenming
+@author: cm
 """
 
-# LCQMC微调预训练模型
+
 
 import sys
 import numpy as np
@@ -14,11 +14,11 @@ from bert4keras.optimizers import extend_with_weight_decay
 from bert4keras.optimizers import extend_with_piecewise_linear_lr
 from keras.layers import Input, Dense, Lambda
 from keras.initializers import TruncatedNormal
+
 from sentence_bert.modules import get_tokenizer, convert_to_ids, get_encoder
 from sentence_bert.modules import Model, merge
 from sentence_bert.utils import load_lcqmc_train_data
 from sentence_bert.hyperparameters import Hyperparamters as hp
-
 
 
 
@@ -37,7 +37,6 @@ tokenizer = get_tokenizer(hp.dict_path)
 a_token_ids, b_token_ids, labels = convert_to_ids(train_data, tokenizer)
 label2id = {0.0: 0, 1.0: 1}
 labels = np.array([[label2id[l]] for l in labels])
-
 
 
 # 建立模型
