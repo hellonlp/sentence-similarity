@@ -22,7 +22,6 @@ The following datasets are all in Chinese.
 |   [LCQMC](https://pan.baidu.com/s/16DfE7fHrCkk4e8a2j3SYUg?pwd=bc8w )                                      | 238766|   8802|  12500|
 |   [PAWSX](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1ox0tJY3ZNbevHDeAqDBOPQ%3Fpwd%3Dmgjn)  |  49401|   2000|   2000|
 |   [STS-B](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/10yfKfTtcmLQ70-jzHIln1A%3Fpwd%3Dgf8y)  |   5231|   1458|   1361|
-|:----------------------:|
 |   [SNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1NOgA7JwWghiauwGAUvcm7w%3Fpwd%3Ds75v)   | 146828|   2699|   2618|
 |   [MNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1xjZKtWk3MAbJ6HX4pvXJ-A%3Fpwd%3D2kte)   | 122547|   2932|   2397|
 
