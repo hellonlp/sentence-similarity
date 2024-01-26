@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 18 21:08:58 2023
 
-@author: Chen Ming
+@author: cm
 """
 
 
@@ -19,6 +19,7 @@ from scipy.stats import spearmanr
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 from transformers import BertConfig, BertModel, BertTokenizer
+
 from simcse.hyperparameters import Hyperparameters as hp
 from simcse.utils import load_data_new
 from simcse.networks import SimCSEModelUnsup
@@ -31,14 +32,14 @@ tokenizer = BertTokenizer.from_pretrained(hp.pretrained_model_path, use_fast=Tru
 
 # 加载数据集
 datasets_sts = {
-    'STS-B-train': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.train.data'),
-    'STS-B-test': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.test.data'),
-    'STS-B-valid': load_data_new('F:/celery/datasets/chn/senteval_cn/STS-B/STS-B.valid.data')
+    'STS-B-train': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.train.data'),
+    'STS-B-test': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.test.data'),
+    'STS-B-valid': load_data_new('datasets/chn/senteval_cn/STS-B/STS-B.valid.data')
 }
 datasets_lqcmc = {
-    'LCQMC-train': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.train.data'),
-    'LCQMC-test': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.test.data'),
-    'LCQMC-valid': load_data_new('F:/celery/datasets/chn/senteval_cn/LCQMC/LCQMC.valid.data')
+    'LCQMC-train': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.train.data'),
+    'LCQMC-test': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.test.data'),
+    'LCQMC-valid': load_data_new('datasets/chn/senteval_cn/LCQMC/LCQMC.valid.data')
 }
 
 
@@ -157,17 +158,16 @@ def train(model, train_dl, dev_dl, optimizer) -> None:
 
 
 if __name__ == '__main__':
-    
     # load data
     logger.info(f'Device: {hp.DEVICE}, Pooling: {hp.POOLING}, Model path: {hp.pretrained_model_path}')
     train_data_lcqmc = datasets_lqcmc['LCQMC-train']#[:1000]
     train_data_sts = datasets_sts['STS-B-train']#[:1000]
     train_data = [l[0] for l in train_data_lcqmc] + [l[0] for l in train_data_sts]   # 两个数据集组合
     print(len(train_data_lcqmc),len(train_data_sts),len(train_data))
-    train_data = random.sample(train_data, hp.SAMPLES)     # 随机采样    
+    train_data = random.sample(train_data, hp.SAMPLES)   # 随机采样    
     print(len(train_data))
-    dev_data = datasets_sts['STS-B-valid']#[:1000]
-    test_data = datasets_sts['STS-B-test']#[:1000]
+    dev_data = datasets_sts['STS-B-valid']
+    test_data = datasets_sts['STS-B-test']
     #
     train_dataloader = DataLoader(TrainDataset(train_data), batch_size=hp.BATCH_SIZE)
     dev_dataloader = DataLoader(TestDataset(dev_data), batch_size=hp.BATCH_SIZE)
@@ -182,7 +182,3 @@ if __name__ == '__main__':
         logger.info(f'epoch: {epoch}')
         train(model, train_dataloader, dev_dataloader, optimizer)
     logger.info(f'Train is finished, best model is saved at {hp.SAVE_PATH}')
-
-
-
-
