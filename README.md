@@ -13,7 +13,8 @@
 |   [STS-B](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/10yfKfTtcmLQ70-jzHIln1A%3Fpwd%3Dgf8y)  |   5231|   1458|   1361|
 |   [SNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1NOgA7JwWghiauwGAUvcm7w%3Fpwd%3Ds75v)   | 146828|   2699|   2618|
 |   [MNLI](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1xjZKtWk3MAbJ6HX4pvXJ-A%3Fpwd%3D2kte)   | 122547|   2932|   2397|
-
+**训练集：** SNLI 和 MNLI  
+**测试集：** ATEC、BQ、LCQMC、PAWSX 和 STS-B  
 
 
 ## 二、模型
