@@ -34,8 +34,12 @@
 
 
 ### 基于RoBERTa Large 版本
-这里使用相同的语言模型**RoBERTa Large**。
-xx
+这里使用相同的语言模型**RoBERTa Large**。  
+|          Model          | STS-B(w-avg) | ATEC | BQ | LCQMC | PAWSX | Avg. |
+|:-----------------------:|:------------:|:-----------:|:----------|:----------|:----------:|:----------:|
+|  [BAAI/bge-large-zh](https://huggingface.co/BAAI/bge-large-zh)  |  78.61| -| -| -| -| -|
+|  [BAAI/bge-large-zh-v1.5](https://huggingface.co/BAAI/bge-large-zh-v1.5)  |  79.07| -| -| -| -| -|
+|  [hellonlp/simcse-large-zh](https://huggingface.co/hellonlp/simcse-roberta-large-zh)  |  81.32| -| -| -| -| -|
 
 
 
