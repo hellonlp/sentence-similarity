@@ -42,4 +42,12 @@
 |  [hellonlp/simcse-large-zh](https://huggingface.co/hellonlp/simcse-roberta-large-zh)  |  81.32| -| -| -| -| -|
 
 
+## 三、参考
+[RAG 之 Embedding 效果对比](https://zhuanlan.zhihu.com/p/680004315)  
+[文本语义相似度 | PromCSE 实战](https://zhuanlan.zhihu.com/p/676601896)  
+[文本语义相似度 | SimCSE 实战](https://zhuanlan.zhihu.com/p/634871699)  
+[文本语义相似度 | Sentence BERT 实战](https://zhuanlan.zhihu.com/p/591249049)  
+[文本语义相似度 | BERT Whitening 实战](https://zhuanlan.zhihu.com/p/585413240)  
+
+
 
