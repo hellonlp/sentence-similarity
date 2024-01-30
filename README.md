@@ -1,5 +1,7 @@
-# Sentence Similarity
+# Sentence Similarity: 句子相似度
 中文文本语义向量模型。
+
+<img src="https://github.com/hellonlp/sentence-similarity/blob/master/imgs/embedding.png" width="800" height="300">  
 
 
 ## 一、数据集
