@@ -3,6 +3,7 @@
 
 <img src="https://github.com/hellonlp/sentence-similarity/blob/main/imgs/embedding.png" width="800">  
 
+<br/>
 
 ## 一、数据集
 下面的数据集都是中文的。
@@ -19,6 +20,7 @@
 **训练集：** SNLI 和 MNLI  
 **测试集：** ATEC、BQ、LCQMC、PAWSX 和 STS-B  
 
+<br/>
 
 ## 二、模型
 考虑到有些数据集的 test 集较小，可能会导致评估准确性偏差较大，所以这里的评估数据同时使用了train、valid和test，且最终评估结果采用了加权平均（w-avg）的方法得到。
@@ -43,6 +45,7 @@
 |  [BAAI/bge-large-zh-v1.5](https://huggingface.co/BAAI/bge-large-zh-v1.5)  |  79.07| -| -| -| -| -|
 |  [hellonlp/simcse-large-zh](https://huggingface.co/hellonlp/simcse-roberta-large-zh)  |  81.32| -| -| -| -| -|
 
+<br/>
 
 ## 三、参考
 [RAG 之 Embedding 效果对比](https://zhuanlan.zhihu.com/p/680004315)  
