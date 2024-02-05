@@ -1,5 +1,5 @@
 # Sentence Similarity: 句子相似度
-句子转向量（中文语义向量模型）。
+<br/>
 
 <img src="https://github.com/hellonlp/sentence-similarity/blob/main/imgs/embedding.png" width="800">  
 
