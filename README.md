@@ -44,6 +44,7 @@
 |  [BAAI/bge-large-zh](https://huggingface.co/BAAI/bge-large-zh)  |  78.61| -| -| -| -| -|
 |  [BAAI/bge-large-zh-v1.5](https://huggingface.co/BAAI/bge-large-zh-v1.5)  |  79.07| -| -| -| -| -|
 |  [hellonlp/simcse-large-zh](https://huggingface.co/hellonlp/simcse-roberta-large-zh)  |  81.32| -| -| -| -| -|
+|  [hellonlp/promcse-large-zh](https://huggingface.co/hellonlp/promcse-bert-large-zh)  |  81.63| -| -| -| -| -|
 
 <br/>
 
