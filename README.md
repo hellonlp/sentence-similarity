@@ -27,14 +27,14 @@
 
 ### 基于RoBERTa Base 版本
 这里使用相同的语言模型**RoBERTa Base**。
-|          Model          |  ATEC | BQ| LCQMC | PAWSX| STS-B| Avg. |
+|          Model          | STS-B|  ATEC | BQ| LCQMC | PAWSX|  Avg. |
 |:-----------------------:|:------------:|:-----------:|:----------|:-------------|:------------:|:----------:|
-|  BERT-Whitening  | -| -| -| -| 65.27| -|
-|  SimBERT   | -| -| -| -| 70.01| -|
-|  SBERT-Whitening  | -| -| -| -| 71.75| -|
+|  BERT-Whitening  | 65.27| -| -| -| -| -|
+|  SimBERT   | 70.01| -| -| -| -| -|
+|  SBERT-Whitening  | 71.75| -| -| -| -| -|
 |  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  | -| -| -| -| 78.61| -|
-|  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  | -| -| -| -| 80.96| -|
-|  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  | -| -| -| -| **81.57**| -|
+|  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  | 80.96| -| -| -| -| -|
+|  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  | **81.57**| -| -| -| -| -|
 
 
 ### 基于RoBERTa Large 版本
@@ -44,7 +44,7 @@
 |  [BAAI/bge-large-zh](https://huggingface.co/BAAI/bge-large-zh)  |  78.61| -| -| -| -| -|
 |  [BAAI/bge-large-zh-v1.5](https://huggingface.co/BAAI/bge-large-zh-v1.5)  |  79.07| -| -| -| -| -|
 |  [hellonlp/simcse-large-zh](https://huggingface.co/hellonlp/simcse-roberta-large-zh)  |  81.32| -| -| -| -| -|
-|  [hellonlp/promcse-large-zh](https://huggingface.co/hellonlp/promcse-bert-large-zh)  |  81.63| -| -| -| -| -|
+|  [hellonlp/promcse-large-zh](https://huggingface.co/hellonlp/promcse-bert-large-zh)  |  **81.63**| -| -| -| -| -|
 
 <br/>
 
