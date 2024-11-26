@@ -32,7 +32,7 @@
 |  BERT-Whitening  | 65.27| -| -| -| -| -|
 |  SimBERT   | 70.01| -| -| -| -| -|
 |  SBERT-Whitening  | 71.75| -| -| -| -| -|
-|  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  | -| -| -| -| 78.61| -|
+|  [BAAI/bge-base-zh](https://huggingface.co/BAAI/bge-base-zh)  | 78.61| -| -| -| -| -|
 |  [hellonlp/simcse-base-zh](https://huggingface.co/hellonlp/simcse-roberta-base-zh)  | 80.96| -| -| -| -| -|
 |  [hellonlp/promcse-base-zh](https://huggingface.co/hellonlp/promcse-bert-base-zh)  | 81.57| -| -| -| -| -|
 |  [hellonlp/promcse-base-zh-v1.1](https://huggingface.co/hellonlp/promcse-bert-base-zh-v1.1)  | **82.02**| -| -| -| -| -|
